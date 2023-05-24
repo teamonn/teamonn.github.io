@@ -6,22 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://teamonn.github.io">
-  <title>圣杯布局 VS 双飞翼布局 | 敲完代码再睡觉的个人主页</title>
+  <title>大厂面试最爱问的Event Loop，一次性弄懂它！ | 敲完代码再睡觉的个人主页</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="作为前端开发者，布局都应该已经写了不少了，但很多时候我们实现布局的思路可能都不一定正确或者不是最合适的。要想自己的布局水平有所提高，两个经典的布局： 圣杯布局 和 双飞翼布局，我个人觉得还是很有必要掌握的。">
+  <meta name="description" content="由于 node.js 里的 Event Loop 跟浏览器端不太一样，一两句说不清。篇幅有限，这里就暂且只探讨面试常问的浏览器端的 Event Loop 了 ：）  缘起最近在准备换工作，也大概看了下平时掌握不深的 JavaScript 事件循环机制（Event Loop）。 但是在今天字节面的笔试中，一道题还是扫到了我的知识盲区。 先看题，输出以下代码的打印结果： 12345678910111">
 <meta property="og:type" content="article">
-<meta property="og:title" content="圣杯布局 VS 双飞翼布局">
-<meta property="og:url" content="https://teamonn.github.io/2017/03/30/classical-layout-comparison/index.html">
+<meta property="og:title" content="大厂面试最爱问的Event Loop，一次性弄懂它！">
+<meta property="og:url" content="https://teamonn.github.io/2023/05/05/%E5%A4%A7%E5%8E%82%E9%9D%A2%E8%AF%95%E6%9C%80%E7%88%B1%E9%97%AE%E7%9A%84Event%20Loop%EF%BC%8C%E4%B8%80%E6%AC%A1%E6%80%A7%E5%BC%84%E6%87%82%E5%AE%83/index.html">
 <meta property="og:site_name" content="敲完代码再睡觉的个人主页">
-<meta property="og:description" content="作为前端开发者，布局都应该已经写了不少了，但很多时候我们实现布局的思路可能都不一定正确或者不是最合适的。要想自己的布局水平有所提高，两个经典的布局： 圣杯布局 和 双飞翼布局，我个人觉得还是很有必要掌握的。">
+<meta property="og:description" content="由于 node.js 里的 Event Loop 跟浏览器端不太一样，一两句说不清。篇幅有限，这里就暂且只探讨面试常问的浏览器端的 Event Loop 了 ：）  缘起最近在准备换工作，也大概看了下平时掌握不深的 JavaScript 事件循环机制（Event Loop）。 但是在今天字节面的笔试中，一道题还是扫到了我的知识盲区。 先看题，输出以下代码的打印结果： 12345678910111">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2017-03-30T09:54:50.000Z">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7b1d13b5c77746f783045cd2f9dc1815~tplv-k3u1fbpfcp-zoom-in-crop-mark:4536:0:0:0.awebp">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/52bec546cf0748f9b89f5ca537d77baa~tplv-k3u1fbpfcp-zoom-in-crop-mark:4536:0:0:0.awebp">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8dcbef5d30ea448684c98f38b5cf3d6d~tplv-k3u1fbpfcp-watermark.image">
+<meta property="article:published_time" content="2023-05-05T12:33:21.000Z">
 <meta property="article:modified_time" content="2023-05-24T15:05:16.907Z">
 <meta property="article:author" content="敲完代码再睡觉">
-<meta property="article:tag" content="CSS 布局">
+<meta property="article:tag" content="基础知识">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7b1d13b5c77746f783045cd2f9dc1815~tplv-k3u1fbpfcp-zoom-in-crop-mark:4536:0:0:0.awebp">
   
     <link rel="alternative" href="/atom.xml" title="敲完代码再睡觉的个人主页" type="application/atom+xml">
   
@@ -236,22 +240,22 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-classical-layout-comparison" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-大厂面试最爱问的Event Loop，一次性弄懂它" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      圣杯布局 VS 双飞翼布局
+      大厂面试最爱问的Event Loop，一次性弄懂它！
     </h1>
   
 
 
   
   
-<a href="/2017/03/30/classical-layout-comparison/" class="archive-article-date">
-        <time datetime="2017-03-30T09:54:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-30</time>
+<a href="/2023/05/05/%E5%A4%A7%E5%8E%82%E9%9D%A2%E8%AF%95%E6%9C%80%E7%88%B1%E9%97%AE%E7%9A%84Event%20Loop%EF%BC%8C%E4%B8%80%E6%AC%A1%E6%80%A7%E5%BC%84%E6%87%82%E5%AE%83/" class="archive-article-date">
+        <time datetime="2023-05-05T12:33:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-05</time>
 </a>
 
   
@@ -260,53 +264,117 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>作为前端开发者，布局都应该已经写了不少了，但很多时候我们实现布局的思路可能都不一定正确或者不是最合适的。要想自己的布局水平有所提高，两个经典的布局： 圣杯布局 和 双飞翼布局，我个人觉得还是很有必要掌握的。</p>
-<span id="more"></span>
+    <blockquote>
+<p>由于 node.js 里的 Event Loop 跟浏览器端不太一样，一两句说不清。篇幅有限，这里就暂且只探讨面试常问的浏览器端的 Event Loop 了 ：）</p>
+</blockquote>
+<h2 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h2><p>最近在准备换工作，也大概看了下平时掌握不深的 JavaScript 事件循环机制（Event Loop）。</p>
+<p>但是在今天字节面的笔试中，一道题还是扫到了我的知识盲区。</p>
+<p>先看题，输出以下代码的打印结果：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">async1</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;1&#x27;</span>);</span><br><span class="line">    <span class="keyword">await</span> <span class="title function_">async2</span>();</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;2&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">async2</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;3&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;4&#x27;</span>);</span><br><span class="line"><span class="title function_">async1</span>();</span><br><span class="line"></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;5&#x27;</span>);</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;6&#x27;</span>);</span><br><span class="line">    <span class="title function_">resolve</span>();</span><br><span class="line">&#125;).<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;7&#x27;</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;8&#x27;</span>);</span><br></pre></td></tr></table></figure>
 
-<p>圣杯布局和双飞翼布局都是为了实现一种非常常见的布局：即两侧定宽，中间自适应的三列布局，特征是中间列要放在文档流前面以优先渲染。</p>
-<p>既然都是为了解决同一个问题，那么有哪些不同呢？我们先来稍微回顾一下这两种布局，再加以比较。</p>
-<h2 id="圣杯布局"><a href="#圣杯布局" class="headerlink" title="圣杯布局"></a>圣杯布局</h2><p>圣杯布局的来历是2006年发在a list part上的这篇文章：</p>
-<p><a target="_blank" rel="noopener" href="http://alistapart.com/article/holygrail">点击原文链接</a> </p>
-<p>html 部分：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;main&quot;</span> <span class="attr">class</span>=<span class="string">&quot;col&quot;</span>&gt;</span> #main <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;left&quot;</span> <span class="attr">class</span>=<span class="string">&quot;col&quot;</span>&gt;</span> #left <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;right&quot;</span> <span class="attr">class</span>=<span class="string">&quot;col&quot;</span>&gt;</span> #right <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>css 部分：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#container</span> &#123;</span><br><span class="line">	<span class="attribute">padding-left</span>: <span class="number">200px</span>;</span><br><span class="line">	<span class="attribute">padding-right</span>: <span class="number">250px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.col</span> &#123; </span><br><span class="line">	<span class="attribute">position</span>: relative; </span><br><span class="line">	<span class="attribute">float</span>: left; </span><br><span class="line">	<span class="attribute">height</span>: <span class="number">300px</span>; </span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#main</span> &#123;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">	<span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>, .<span class="number">5</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#left</span> &#123;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">	<span class="attribute">margin-left</span>: -<span class="number">100%</span>;</span><br><span class="line">	<span class="attribute">left</span>: -<span class="number">200px</span>;</span><br><span class="line">	<span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>, .<span class="number">5</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#right</span> &#123;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">250px</span>;</span><br><span class="line">	<span class="attribute">margin-left</span>: -<span class="number">250px</span>;</span><br><span class="line">	<span class="attribute">left</span>: <span class="number">250px</span>;</span><br><span class="line">	<span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>, .<span class="number">5</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>大致实现思路：</strong>三个 col 的容器 #container 一开始先空出左右两个地方，准备待会儿放左列和右列。三个 col 都设置 <code>float: left</code> 和 相对定位，然后左列 <code>margin-left: -100%</code>; 则左列跟中间主列左对齐了。这时左列相对定位加上 left 值是负的左列宽度，就飘到最左边了；右列同理，margin-left 值是负的自身宽度，这时右列跟中间主列右对齐了。右列也是相对定位的，left 值是自身宽度时，右列就飘到最右侧了。</p>
-<h2 id="双飞翼布局"><a href="#双飞翼布局" class="headerlink" title="双飞翼布局"></a>双飞翼布局</h2><p>双飞翼布局的概念始于淘宝UED，据说是玉伯提出的（网上看到的，未求证）。意思是：如果把三列布局比作一只大鸟，可以把中间的主列看成是鸟的身体，左右则是鸟的翅膀。这个布局的实现思路是，先把最重要的身体部分放好，然后再将翅膀移动到适当的地方。</p>
-<p>html 部分：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;main-wrapper&quot;</span> <span class="attr">class</span>=<span class="string">&quot;col&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;main&quot;</span>&gt;</span> #main <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;left&quot;</span> <span class="attr">class</span>=<span class="string">&quot;col&quot;</span>&gt;</span> #left <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;right&quot;</span> <span class="attr">class</span>=<span class="string">&quot;col&quot;</span>&gt;</span> #right <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>css 部分：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.col</span> &#123; </span><br><span class="line">	<span class="attribute">float</span>: left; </span><br><span class="line">	<span class="attribute">height</span>: <span class="number">300px</span>; </span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#main-wrapper</span> &#123;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#main</span> &#123;</span><br><span class="line">	<span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">	<span class="attribute">margin-left</span>: <span class="number">200px</span>;</span><br><span class="line">	<span class="attribute">margin-right</span>: <span class="number">250px</span>;</span><br><span class="line">	<span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>, .<span class="number">5</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#left</span> &#123;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">	<span class="attribute">margin-left</span>: -<span class="number">100%</span>;</span><br><span class="line">	<span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>, .<span class="number">5</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#right</span> &#123;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">250px</span>;</span><br><span class="line">	<span class="attribute">margin-left</span>: -<span class="number">250px</span>;</span><br><span class="line">	<span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>, .<span class="number">5</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>大致实现思路：</strong>在圣杯布局的 dom 基础上，给 中间列加了个容器，然后在容器里面左右各空出一个地方，准备待会儿放左列和右列。三个 col 都设置 <code>float: left</code>，然后左列 <code>margin-left: -100%</code>， 则左列就飘到最左边了；右列稍有不同，margin-left 值是负的自身宽度，这时右列就飘到最右侧了。</p>
-<h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><p>圣杯布局</p>
+<p>看到这里，你可能已经在内心有了你的答案。在继续往下看之前，你也可以先去浏览器控制台验证下你的答案。</p>
+<p>如果你全对，那么恭喜你，这块已经难不倒你了，你甚至可以直接跳过本文；如果你像我一样，谨小慎微还是错了一两个地方，那么继续往下看还是很有必要的。</p>
+<p>这道题目大家一看就知道是在考 Event Loop，那么下面就先讲述下我自己对Event Loop的理解，然后再跟大家对下这道题的思路。如果我理解有误，也欢迎在评论区告诉我，我会及时弄清楚并纠正。</p>
+<h2 id="Event-Loop的背景：JS-单线程"><a href="#Event-Loop的背景：JS-单线程" class="headerlink" title="Event Loop的背景：JS 单线程"></a>Event Loop的背景：JS 单线程</h2><blockquote>
+<p>JS 是单线程的，这是因为设计之初它主要就是为了用来与用户互动，以及操作DOM的，而不是有现在这么大的作用。</p>
+</blockquote>
+<p>由于<strong>JavaScript是单线程语言</strong>的特性，所以 JS 同一时间只能做一件事情。如果有很多任务就必须排队，等一个任务处理完才能处理下一个任务。</p>
+<p>这种处理任务的方式，我们称之为<code>同步</code>。</p>
+<p>常见的同步任务和异步任务我们分下类：</p>
 <ul>
-<li>特征：主列先加载，统一浮动，统一相对定位，设置负边距</li>
-<li>优点：不需要额外的 dom 节点</li>
-<li>缺点：需要清除浮动，需要设置相对定位</li>
+<li>  <code>同步任务</code>：比如声明语句、for、赋值等，读取后依据从上到下从左到右，立即执行</li>
+<li>  <code>异步任务</code>：比如 ajax 网络请求，setTimeout 定时函数等都属于异步任务。异步任务会通过事件任务队列(Event Queue)机制（先进先出的队列机制）来进行协调执行</li>
 </ul>
-<p>双飞翼布局</p>
+<p>如果所有 JS 代码都当做同步任务处理不仅效率低，还会引发很多问题。例如：协调事件、用户交互、脚本执行、UI 渲染和网络处理等行为被阻塞了，就会影响页面加载效率，造成页面卡顿甚至假死。</p>
+<p>为了优化 JS 单线程阻塞的问题，于是就引入了<code>异步</code>任务处理机制。异步任务的特点是，暂缓返回任务执行结果。</p>
+<blockquote>
+<p>如果一段代码，在执行时还不能够得到预期结果，而是需要在将来通过一定的手段拿到，那么这块代码就是异步任务。</p>
+</blockquote>
+<p>JS 处理同步任务、异步任务的流程大致如下：</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7b1d13b5c77746f783045cd2f9dc1815~tplv-k3u1fbpfcp-zoom-in-crop-mark:4536:0:0:0.awebp" alt="彻底搞懂JavaScript事件循环 \- 掘金"></p>
+<p>也就是说，异步任务不进入JS单线程，而是放在<code>任务队列</code>中。若有多个异步任务，也是需要在任务队列中排队等待的。</p>
+<blockquote>
+<p>任务队列类似于缓冲区，任务下一步会被移到执行栈然后JS线程执行调用栈的任务。</p>
+</blockquote>
+<p>前面说到：如果所有代码不分同步异步都放在主线程依次排队执行，会影响页面的渲染效率。那异步任务依次排队执行，有没有类似的问题呢？</p>
+<p>答案是有的。</p>
+<h2 id="Event-Loop的基础：宏任务-amp-微任务"><a href="#Event-Loop的基础：宏任务-amp-微任务" class="headerlink" title="Event Loop的基础：宏任务 &amp; 微任务"></a>Event Loop的基础：宏任务 &amp; 微任务</h2><p>异步任务，各个任务执行时间长短也差别很大。有的是 setTimeout 这种耗时很久的，有的是 promise 这种耗时较短的。</p>
+<p>当异步任务很多的时候，耗时久的就会阻塞后面所有的异步任务，包括一些很快可以执行完的也被阻塞。</p>
+<p>于是 JS 引擎就将异步任务分类管理，划分成两个队列：<strong>宏任务队列</strong> 和 <strong>微任务队列</strong>。</p>
+<p>宏任务（macroTask）有：</p>
 <ul>
-<li>特征：主列先加载，仅需统一浮动、负边距</li>
-<li>优点：兼容性非常好，IE5.5 以上都支持</li>
-<li>缺点：需要额外的 dom 节点</li>
+<li><code>&lt;script async&gt;</code>标签中的运行代码（异步任务）</li>
+<li>setTimeout、setInterval的回调函数</li>
+<li>事件触发的回调函数，例如<code>DOM Events</code>、<code>I/O</code>、<code>requestAnimationFrame</code>、Ajax、UI交互等</li>
 </ul>
-<p>其实，实现这种经典的三列布局，还有另外两种思路：一种是圣杯布局的变种 —— 改用绝对定位来实现，一种是使用 flex 布局来实现。有兴趣的可以自己尝试下，这里我也简单的做出对比：</p>
-<p>绝对定位</p>
+<p>微任务（microTask）有：</p>
 <ul>
-<li>特征：按先后顺序加载，需要设置浮动、绝对定位、负边距</li>
-<li>优点：无高度坍塌，没有破坏文档流，不需要清除浮动</li>
-<li>缺点：浮动、绝对定位、负边距齐齐上阵，容易混淆</li>
+<li>Promise的回调函数：then、catch、finally</li>
+<li>MutationObserver：<a target="_blank" rel="noopener" href="http://javascript.ruanyifeng.com/dom/mutationobserver.html">使用方式</a></li>
+<li>queueMicrotask：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/WindowOrWorkerGlobalScope/queueMicrotask">使用方式</a></li>
+<li>process.nextTick：Node独有</li>
 </ul>
-<p>flex 布局</p>
+<p>为了方便记忆，我们可以这么理解：宏任务是JavaScript 引擎（浏览器或 Node.js）发起的任务，微任务是 JavaScript 代码本身发起的任务</p>
+<p>宏任务、微任务都是异步任务，而同步任务立即执行，不需要放入任务队列。</p>
+<h2 id="Event-Loop的原理：宏任务与微任务交替执行"><a href="#Event-Loop的原理：宏任务与微任务交替执行" class="headerlink" title="Event Loop的原理：宏任务与微任务交替执行"></a>Event Loop的原理：宏任务与微任务交替执行</h2><p>为了既不阻塞JS单线程的执行，同时又保障JS执行的效率，前辈们设计了出了一套<code>事件循环机制</code>：</p>
 <ul>
-<li>特征：容器 display 指为 flex，主列 flex 值为1，两侧宽度固定</li>
-<li>优点：写法简洁，易理解（还可以改写成一个响应式的三列布局，分辨率是移动设备时两侧都出现在主列下边）</li>
-<li>缺点：兼容性不好，需要加上各类浏览器前缀</li>
+<li>将 document 下 script 标签中的<strong>所有同步代码都放入执行栈</strong>，立即执行</li>
+<li>执行过程中如果产出新的宏任务/微任务，就将他们<strong>推入相应的任务队列</strong></li>
+<li>等执行栈没有代码可以执行<strong>之后再执行微任务队列</strong></li>
+<li>微任务队列都执行完以后，又开始执行宏任务队列（执行微任务队列）</li>
+<li>如此循环，<strong>不断重复的过程就叫做 Event Loop(事件循环)</strong> </li>
 </ul>
-<p>总的来看，网页布局技巧不外乎：浮动、绝对定位 / 相对定位、负边距、flex 布局。能把这几个灵活的搭配用到一起，大部分的布局一般就都能实现了。选用最合适的方法来布局，不仅能帮你节省很多时间，还能提升不少页面的加载性能。</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/52bec546cf0748f9b89f5ca537d77baa~tplv-k3u1fbpfcp-zoom-in-crop-mark:4536:0:0:0.awebp" alt="一次搞懂\-JS事件循环之宏任务和微任务 \- 掘金"></p>
+<p>串起来的过程为：</p>
+<blockquote>
+<p>可执行代码 -&gt; 微任务队列 -&gt; 宏任务 -&gt; 微任务队列 -&gt; 宏任务 ……</p>
+</blockquote>
+<p>讲到这里，稍微也提下 Node.js 里的 Event Loop 其实跟浏览器端的不太一样。区别是：</p>
+<ul>
+<li>  Node端：microTask 在事件循环的各个阶段之间执行</li>
+<li>  浏览器端：microTask 在事件循环的 macrotask 执行完之后执行</li>
+</ul>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8dcbef5d30ea448684c98f38b5cf3d6d~tplv-k3u1fbpfcp-watermark.image" alt="diff.png"></p>
+<p>概念大家已经理解了，建议大家可以结合自己日常代码来研究下 Event Loop 的过程来巩固掌握。</p>
+<p>由于我们开头已经抛出过一个比较经典的Event Loop面试题了，这里就不另外举例了。</p>
+<h2 id="回到开始的题目"><a href="#回到开始的题目" class="headerlink" title="回到开始的题目"></a>回到开始的题目</h2><p>这道平平无奇的题目，除了主要考事件循环，还考了 promise 的链式调用、async/await 函数的返回值。</p>
+<p>有了上面的知识储备，我们再看开头的题目就显得思路清晰了。</p>
+<blockquote>
+<p>先揭晓打印结果：4 =&gt; 1 =&gt; 3 =&gt; 6 =&gt; 8 =&gt; 2 =&gt; 7 =&gt; 5</p>
+</blockquote>
+<p>一起来仔细盘下这道题 JS 事件循环的执行过程（建议打开右侧控制台对照题目进行）：</p>
+<ul>
+<li>首先，所有的代码都会被推到执行栈执行。如果遇到异步任务会根据宏/微任务类型将其推到相应的任务队列</li>
+<li>首先打印 4，因为 <code>async1</code>、<code>async2</code> 两个函数开始只是声明，没有调用</li>
+<li>然后就是打印 1。看到 async 不要慌，async函数里的内容大都是同步执行的（除了 await 后面是作为 promise 来执行的）</li>
+<li>然后就是打印 3。调用函数 async2，里面的代码会立即执行，但不会立即返回结果到async1 的 await 那里</li>
+<li>然后就是打印 6。为什么不是 2，因为打印 2 这个任务在 await 后面，是会被推进了微任务队列的</li>
+<li>为啥是 6 也解释下，Promise的函数体是同步立即执行的，只有 then、catch、finally 这些回调才是异步调用的（见上文）</li>
+<li>此时的回调函数打印 7，也被推进了微任务队列，放到打印 2 后边异步执行</li>
+<li>然后就是打印 8，毫无疑问是同步执行</li>
+<li>同步任务至此已经全部完成，宏任务执行完了便开始执行微任务队列的微任务了</li>
+<li>首先是打印 2，它最开始被推进微任务队列</li>
+<li>其次是打印 7，初始化 promise 的时候将它推进微任务队列的（因为回调是异步执行的），这个时候微任务队列也已经执行完</li>
+<li>最后是打印 5，根据前面所讲 setTimeout 是一个标准的宏任务，微任务队列执行完了就要执行宏任务队列</li>
+</ul>
+<p>总结了下，有几个重点需要关注下：</p>
+<ul>
+<li>同步任务是会立即执行的，不会被加入到任务队列中，更不会进行Event Loop</li>
+<li>微任务总是优先于宏任务执行，每个宏任务执行完就一定会立即执行微任务队列</li>
+<li>宏任务都是逐个来执行的，微任务都是以队列的方式来执行的（参考结尾的面试题结果）</li>
+<li>new Promise 中的代码是同步的，但是回调函数则是异步的（微任务）</li>
+<li><code>async/await</code> 是 JavaScript 中使用同步代码来处理异步的一种方式，它本身并不是宏任务或微任务，但 <code>async</code> 函数将返回一个 Promise 对象。执行 async 函数执行时，一旦遇到await就会先返回一个Promise对象，等到await后的操作完成后，再接着执行async函数体内的语句</li>
+<li>setTimeout() 的第2个参数是为了告诉 JavaScript 再过多长时间把当前任务添加到宏任务队列中</li>
+</ul>
+<h2 id="缘灭"><a href="#缘灭" class="headerlink" title="缘灭"></a>缘灭</h2><p>因为下份工作不想太卷，所以本来也没打算冲刺字节的，甚至说是对字节这个面试毫无准备。</p>
+<p>但不知道是哪位猎头不讲武德，偷偷摸摸给我投了。</p>
+<p>我只能说，当时大意了，没有闪！</p>
+<p>没想到简历还过了，我就当顺便练练手，为后续面试积累下经验吧！</p>
 <hr>
-<p>更多文章，可以访问: <a target="_blank" rel="noopener" href="http://blog.csdn.net/u014326381/article">我的csdn博客</a></p>
+<p>再补充一道网上看到的面试题，这个题含多个宏任务的执行，能帮助你更清晰的理解 Event Loop：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Promise</span>.<span class="title function_">resolve</span>().<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">1</span>);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">2</span>); </span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123; </span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;setTimeout1&#x27;</span>); </span><br><span class="line">    <span class="title class_">Promise</span>.<span class="title function_">resolve</span>().<span class="title function_">then</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123; </span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;promise&#x27;</span>); </span><br><span class="line">    &#125;); </span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123; </span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;setTimeout2&#x27;</span>); </span><br><span class="line">    <span class="title class_">Promise</span>.<span class="title function_">resolve</span>().<span class="title function_">then</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123; </span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;promise2&#x27;</span>); </span><br><span class="line">    &#125;); </span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 输出 2 1 setTimeout1 promise setTimeout2 promise2</span></span><br></pre></td></tr></table></figure>
+
+<p>有兴趣大家也可以在评论区讨论交流下~</p>
 
     
 
@@ -353,7 +421,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="https://teamonn.github.io/2017/03/30/classical-layout-comparison/" title="圣杯布局 VS 双飞翼布局" target="_blank">https://teamonn.github.io/2017/03/30/classical-layout-comparison/</a>
+          <a href="https://teamonn.github.io/2023/05/05/大厂面试最爱问的Event Loop，一次性弄懂它/" title="大厂面试最爱问的Event Loop，一次性弄懂它！" target="_blank">https://teamonn.github.io/2023/05/05/大厂面试最爱问的Event Loop，一次性弄懂它/</a>
         </li>
         
         <li>
@@ -375,7 +443,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">CSS 布局</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基础知识</a>
         		</li>
       		
 		</ul>
@@ -431,7 +499,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://teamonn.github.io/2017/03/30/classical-layout-comparison/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://teamonn.github.io/2023/05/05/%E5%A4%A7%E5%8E%82%E9%9D%A2%E8%AF%95%E6%9C%80%E7%88%B1%E9%97%AE%E7%9A%84Event%20Loop%EF%BC%8C%E4%B8%80%E6%AC%A1%E6%80%A7%E5%BC%84%E6%87%82%E5%AE%83/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -446,18 +514,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2017/04/09/deep-copy-and-shallow-copy/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          JavaScript 的深拷贝和浅拷贝
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/03/12/merge-compare-rebase/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">闲话 git merge 与 git rebase 的区别</div>
+    <a href="/2018/04/02/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">域名收敛和域名发散，及前端性能优化</div>
       <i class="icon-circle-right"></i>
     </a>
   
