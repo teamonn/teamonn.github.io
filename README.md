@@ -23,4 +23,6 @@ hexo clean && hexo deploy // 发布到远程
 
 ### 写文章
 
-在 `source` 目录下的 `_posts` 文件下新建 md 格式文件（可复制之前的改）。
+可参考 hexo 文档：https://hexo.io/zh-cn/docs/writing。
+
+当然，你可以选择更简单易懂的方式：在 `source` 目录下的 `_posts` 文件下新建 md 格式文件（可复制之前的改）。
