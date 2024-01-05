@@ -5,8 +5,113 @@
 	<meta charset="UTF-8">
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
 	<title>个人简历</title>
+	<style>
+		html, body {
+			font-family: PingFangSC-Regular;
+			background-color: #f7f9fa;
+    		color: #3e4e59;
+		}
+		a {
+			color: #418fbe;
+			cursor: pointer;
+			text-decoration: underline;
+		}
+		.main {
+			margin: 12px auto;
+			max-width: 780px;
+		}
+		header {
+			height: 250px;
+			border-radius: 5px 5px 0 0;
+    		overflow: hidden;
+			background: url(../assets/img/moon.png) center center no-repeat;
+			background-size: cover;
+		}
+		header > h1 {
+			color: #fff;
+			font-size: 42px;
+			line-height: 200px;
+			padding-left: 32px;
+		}
+		section {
+			/* margin-top: 12px; */
+			padding: 8px 20px;
+			background-color: #fff;
+		}
+		h2 {
+			color: #418fbe;
+		}
+		h4 {
+			text-decoration: underline;
+		}
+		li {
+			line-height: 2em;
+		}
+		footer {
+			/* margin-top: 12px; */
+			color: #f7f9fa;
+			padding: 12px 0;
+			border-radius: 0 0 5px 5px;
+			text-align: center;
+			background-color: #418fbe;
+		}
+	</style>
 </head>
 <body>
-	 <h1>个人简历</h1>
+	<div class="main">
+		<header>
+			<h1>个人简历</h1>
+		</header>
+
+		<!-- 正文 -->
+		<section>
+			<h2>工作经历</h2>
+			<article>
+				<p>2023.04 - 至今，就职于银河集团，高级前端开发工程师</p>
+				<p>2018.03 - 2023.04，就职于大疆，高级前端开发工程师</p>
+				<p>2016.07 - 2018.03，就职于小恩爱，前端开发工程师</p>
+			</article>
+
+			<h2>主要项目</h2>
+			<h4>HR集成门户</h4>
+			<p>项目描述：将多个 HR 系统集成一个网站使用，方便用户浏览，提升用户体验。</p>
+			<p>项目职责：</p>
+			<ul>
+				<li>调研微前端方案，使用qiankun搭建基座并改造多个前端项目，完成HR系统的一站式集成</li>
+				<li>通过设置Nginx 反向代理，解决主、子应用静态资源引用的跨域问题，实现同域名访问</li>
+				<li>处理多应用的样式隔离，并实现主题色统一和一键换肤功能</li>
+				<li>通过前端 k8s 容器化和链路改造实现灰度发布，将发版时长由原来的 2h 优化到 10min</li>
+				<li>微前端架构改造中，搭建 UI 组件库，并带领组员沉淀常用组件，使用 storybook 编写组件文档</li>
+				<li>使用 docker + nginx 容器化部署 SPA 项目，使之在 k8s 服务化，实现了灰度发布流程</li>
+				<li>使用vuePress编写团队前端规范，并将规范落地到 Eslint+Prettier+vsCode自动保存+husky</li>
+			</ul>
+
+			<h2>技能专长</h2>
+			<ul>
+				<li>熟悉W3C标准，深入理解HTML5、CSS3、JS相关前端知识体系</li>
+				<li>熟练掌握Vue、React（ES6 + TS）框架及原理，主导过中大型 web 项目开发</li>
+				<li>了解前端架构设计，有微前端（qiankun）、SSR、BFF、架构改造K8S容器化部署等经验</li>
+				<li>理解 JavaScript 运行机制和页面渲染原理，能运用各种技术手段进行性能优化</li>
+				<li>熟悉前端工程化、组件化、模块化，搭建过组内的UI组件库，编写过plugin、chrome 插件、cli工具等</li>
+				<li>了解服务器开发，有Linux、Nginx、Node.js+数据库开发经验，能独立搭建和落地前端监控平台</li>
+				<li>有技术管理背景： 能熟练管控多成员、多版本并行的git协同开发工作流，掌握多种调试工具/技巧，具备较强的沟通协作和问题处理能力</li>
+			</ul>
+
+			<h2>教育背景</h2>
+			<p>2012.09 - 2016.06，华中科技大学文华学院，软件工程专业，本科</p>
+
+			<!-- <h2>自我评价</h2> -->
+			<h2>个人链接</h2>
+			<ul>
+				<li>掘金：<a>https://juejin.cn/user/4353721774642536/posts</a></li>
+				<li>个人博客：<a>https://teamonn.github.io/</a></li>
+				<li>github：<a>https://github.com/teamonn</a></li>
+			</ul>
+		</section>
+
+		<footer>
+			<p>© 2024 个人简历·徐正茂</p>
+		</footer>
+	</div>
 </body>
 </html>
