@@ -17,7 +17,7 @@
 			text-decoration: underline;
 		}
 		.main {
-			margin: 12px auto;
+			margin: 32px auto;
 			max-width: 780px;
 		}
 		header {
@@ -35,7 +35,7 @@
 		}
 		section {
 			/* margin-top: 12px; */
-			padding: 8px 20px;
+			padding: 20px;
 			background-color: #fff;
 		}
 		h2 {
@@ -59,6 +59,32 @@
 		@media (max-width: 768px) {
 			body {
 				margin: 0!important;
+			}
+			.main {
+				margin: 0;
+			}
+			header, footer {
+				border-radius: 0;
+			}
+			header {
+				height: 220px;
+			}
+			header > h1 {
+				height: 70px!important;
+			}
+			h2 {
+				margin-top: 0;
+			}
+			ul {
+				padding-left: 20px;
+			}
+			li {
+				line-height: 1.8em;
+				list-style-type: circle;
+			}
+			a {
+				word-break: break-all; /* 根据需求选择断开长单词的方式 */
+        		white-space: normal; /* 正常处理空格、换行等特殊字符 */
 			}
 		}
 	</style>
@@ -109,9 +135,9 @@
 			<!-- <h2>自我评价</h2> -->
 			<h2>个人链接</h2>
 			<ul>
-				<li>掘金：<a>https://juejin.cn/user/4353721774642536/posts</a></li>
-				<li>个人博客：<a>https://teamonn.github.io/</a></li>
-				<li>github：<a>https://github.com/teamonn</a></li>
+				<li>掘金&nbsp;<a>https://juejin.cn/user/4353721774642536/posts</a></li>
+				<li>个人博客&nbsp;<a>https://teamonn.github.io/</a></li>
+				<li>github&nbsp;<a>https://github.com/teamonn</a></li>
 			</ul>
 		</section>
 
